@@ -1,10 +1,10 @@
 const express = require("express");
 
-const UserController = require("./controllers/UserController");
+const AccountController = require("./controllers/AccountController");
 
 const routes = express.Router();
 
-routes.get("/users/sign-in", UserController.signIn);
-routes.get("/users/sign-up", UserController.signUp);
+routes.get("/users/sign-in", AccountController.signIn);
+routes.post("/users/sign-up", AccountController.signUp);
 
 module.exports = routes;
