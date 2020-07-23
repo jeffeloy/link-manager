@@ -8,14 +8,18 @@ module.exports = {
   async signUp(req, res) {
     const { email, password } = req.body;
 
+    const account = await Account.findOne({ where: { email } });
+
+    if (account) return res.json("Account already exists");
+
     const saltRounds = 10;
     const hash = bcrypt.hashSync(password, saltRounds);
 
-    const account = await Account.create({
+    const newAccount = await Account.create({
       email,
       password: hash,
     });
 
-    return res.json(account);
+    return res.json(newAccount);
   },
 };
