@@ -1,6 +1,7 @@
 const { Account } = require("../models");
 const bcrypt = require("bcrypt");
 const { getMessage } = require("../helpers/validator");
+const { generateJwt, generateRefreshJwt } = require("../helpers/jwt");
 
 module.exports = {
   async signIn(req, res) {
@@ -25,6 +26,12 @@ module.exports = {
       password: hash,
     });
 
-    return res.jsonOK(newAccount, getMessage("account.signup.sucess"));
+    const token = generateJwt({ id: newAccount.id });
+    const refreshToken = generateRefreshJwt({ id: newAccount.id });
+
+    return res.jsonOK(newAccount, getMessage("account.signup.sucess"), {
+      token,
+      refreshToken,
+    });
   },
 };
