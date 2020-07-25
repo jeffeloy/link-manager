@@ -1,5 +1,6 @@
 const { Account } = require("../models");
 const bcrypt = require("bcrypt");
+const { getMessage } = require("../helpers/validator");
 
 module.exports = {
   async signIn(req, res) {
@@ -10,7 +11,11 @@ module.exports = {
 
     const account = await Account.findOne({ where: { email } });
 
-    if (account) return res.jsonBadRequest(null, "Account already exists");
+    if (account)
+      return res.jsonBadRequest(
+        null,
+        getMessage("account.signup.email_exists")
+      );
 
     const saltRounds = 10;
     const hash = bcrypt.hashSync(password, saltRounds);
@@ -20,6 +25,6 @@ module.exports = {
       password: hash,
     });
 
-    return res.jsonOK(newAccount, "Account created.");
+    return res.jsonOK(newAccount, getMessage("account.signup.sucess"));
   },
 };

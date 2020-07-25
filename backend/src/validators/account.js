@@ -1,4 +1,5 @@
 const Joi = require("@hapi/joi");
+const { getValidatorError } = require("../helpers/validator");
 
 const accountSignUp = (req, res, next) => {
   const { email, password, password_confirmation } = req.body;
@@ -16,7 +17,9 @@ const accountSignUp = (req, res, next) => {
   );
 
   if (error) {
-    return res.jsonBadRequest(null, null, { error });
+    const messages = getValidatorError(error, "account.signup");
+
+    return res.jsonBadRequest(null, null, { error: messages });
   }
 
   next();
