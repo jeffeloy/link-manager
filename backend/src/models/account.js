@@ -1,8 +1,18 @@
 module.exports = (sequelize, DataTypes) => {
   const Account = sequelize.define("Account", {
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
+
+  Account.associate = (models) => {
+    Account.hasMany(models.Link, { foreignKey: "accountId" });
+  };
 
   Account.prototype.toJSON = function () {
     const values = { ...this.get() };
