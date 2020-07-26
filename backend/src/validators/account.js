@@ -51,4 +51,4 @@ const accountSignUp = (req, res, next) => {
   next();
 };
 
-module.exports = { accountSignUp };
+module.exports = { accountSignIn, accountSignUp };

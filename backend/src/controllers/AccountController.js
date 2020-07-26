@@ -5,7 +5,27 @@ const { generateJwt, generateRefreshJwt } = require("../helpers/jwt");
 
 module.exports = {
   async signIn(req, res) {
-    return res.json("Sign-in");
+    const { email, password } = req.body;
+
+    const account = await Account.findOne({ where: { email } });
+
+    const match = account
+      ? bcrypt.compareSync(password, account.password)
+      : null;
+
+    if (!match)
+      return res.jsonBadRequest(
+        null,
+        getMessage("account.signup.email_exists")
+      );
+
+    const token = generateJwt({ id: account.id });
+    const refreshToken = generateRefreshJwt({ id: account.id });
+
+    return res.jsonOK(account, getMessage("account.signin.sucess"), {
+      token,
+      refreshToken,
+    });
   },
   async signUp(req, res) {
     const { email, password } = req.body;
