@@ -48,11 +48,23 @@ module.exports = {
 
     fields.map((fieldName) => {
       const newValue = body[fieldName];
-      if (newValue) link[fieldName] = newValue;
+      if (newValue !== undefined) link[fieldName] = newValue;
     });
 
     await link.save();
 
     return res.jsonOK(link);
+  },
+
+  async delete(req, res) {
+    const accountId = 1;
+    const { id } = req.params;
+
+    const link = await Link.findOne({ where: { id, accountId } });
+    if (!link) return res.jsonNotFound();
+
+    await link.destroy();
+
+    return res.jsonOK();
   },
 };

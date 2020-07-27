@@ -13,5 +13,6 @@ routes.get("/links", LinkController.index);
 routes.get("/links/:id", LinkController.show);
 routes.post("/links", LinkController.store);
 routes.put("/links/:id", LinkController.update);
+routes.delete("/links/:id", LinkController.delete);
 
 module.exports = routes;
