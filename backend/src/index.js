@@ -1,12 +1,15 @@
 const express = require("express");
 const db = require("./models");
 const response = require("./middlewares/response.js");
+const checkJwt = require("./middlewares/jwt.js");
 
 const routes = require("./routes");
 
 const app = express();
 
 app.use(response);
+app.use(checkJwt);
+
 app.use(express.json());
 app.use(routes);
 

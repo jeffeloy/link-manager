@@ -2,14 +2,14 @@ const { Link } = require("../models");
 
 module.exports = {
   async index(req, res) {
-    const accountId = 1;
+    const { accountId } = req;
 
     const links = await Link.findAll({ where: { accountId } });
 
     return res.jsonOK(links);
   },
   async show(req, res) {
-    const accountId = 1;
+    const { accountId } = req;
     const { id } = req.params;
 
     const link = await Link.findOne({ where: { id, accountId } });
@@ -19,8 +19,8 @@ module.exports = {
   },
 
   async store(req, res) {
-    const accountId = 1;
-    const { label, url, isSocial } = req.body;
+    const { accountId, body } = req;
+    const { label, url, isSocial } = body;
 
     const image = "https://google.com/image.jpg";
 
@@ -36,9 +36,8 @@ module.exports = {
   },
 
   async update(req, res) {
-    const accountId = 1;
+    const { accountId, body } = req;
     const { id } = req.params;
-    const { body } = req;
 
     const fields = ["label", "url", "isSocial"];
 
@@ -57,7 +56,7 @@ module.exports = {
   },
 
   async delete(req, res) {
-    const accountId = 1;
+    const { accountId } = req;
     const { id } = req.params;
 
     const link = await Link.findOne({ where: { id, accountId } });
