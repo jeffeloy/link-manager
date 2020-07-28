@@ -9,6 +9,8 @@ const routes = express.Router();
 routes.post("/users/sign-in", accountSignIn, AccountController.signIn);
 routes.post("/users/sign-up", accountSignUp, AccountController.signUp);
 
+routes.post("/refresh", AccountController.refreshToken);
+
 routes.get("/links", LinkController.index);
 routes.get("/links/:id", LinkController.show);
 routes.post("/links", LinkController.store);
