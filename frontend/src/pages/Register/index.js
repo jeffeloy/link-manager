@@ -1,36 +1,43 @@
 import React from "react";
 import {Link} from "react-router-dom";
+
 import logoImg from "../../assets/logo.png";
-import linkImg from "../../assets/link.svg";
+import linkImg from "../../assets/link-register.svg";
 
 import "./styles.css";
 
 const Login = () => {
   return (
-    <div className="login-container">
+    <div className="register-container">
       <section className="form">
         <img src={logoImg} alt="Link Manager" className="logo" />
 
         <form>
-          <h1>Faça seu login</h1>
+          <h1>Cadastre a sua conta</h1>
 
 
           <input
             type="email"
-            className="input"
+            className="email"
             placeholder="E-mail"
           />
 
           <input
             type="password"
+            className="password"
             placeholder="Senha"
           />
+          <input
+            type="password"
+            className="confirm-password"
+            placeholder="Confirmar senha"
+          />
 
-          <button type="submit" className="button">Entrar</button>
+          <button type="submit" className="button">Cadastrar</button>
 
-          <Link className="back-link" to="/register">
+          <Link className="back-link" to="/">
             {/* <FiLogIn size={16} color="#E02041"/> */}
-            Cadastre-se
+            Voltar para o login
             </Link>
         </form>
       </section>
