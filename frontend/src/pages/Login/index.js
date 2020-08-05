@@ -1,5 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { FiLogIn } from "react-icons/fi";
 import logoImg from "../../assets/logo.png";
 import linkImg from "../../assets/link.svg";
 
@@ -14,28 +15,22 @@ const Login = () => {
         <form>
           <h1>Faça seu login</h1>
 
+          <input type="email" className="input" placeholder="E-mail" />
 
-          <input
-            type="email"
-            className="input"
-            placeholder="E-mail"
-          />
+          <input type="password" placeholder="Senha" />
 
-          <input
-            type="password"
-            placeholder="Senha"
-          />
-
-          <button type="submit" className="button">Entrar</button>
+          <button type="submit" className="button">
+            Entrar
+          </button>
 
           <Link className="back-link" to="/register">
-            {/* <FiLogIn size={16} color="#E02041"/> */}
+            <FiLogIn size={16} color="#fc3847" />
             Cadastre-se
-            </Link>
+          </Link>
         </form>
       </section>
 
-      <img src={linkImg} alt="Link"/>
+      <img src={linkImg} alt="Link" />
     </div>
   );
 };
