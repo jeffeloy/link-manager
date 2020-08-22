@@ -1,0 +1,33 @@
+li,
+a {
+  font-weight: 500;
+  font-size: 16px;
+  color: #333333;
+  text-decoration: none;
+}
+
+header {
+  height: 50px;
+  display: flex;
+  background: #c71f37;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-links {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  list-style: none;
+}
+.nav-links li {
+  display: inline-block;
+  padding: 0px 100px;
+}
+.nav-links li a {
+  color: #f4f3ee;
+  transition: all 0.3s ease 0s;
+}
+.nav-links li a:hover {
+  color: #ced4da;
+}
