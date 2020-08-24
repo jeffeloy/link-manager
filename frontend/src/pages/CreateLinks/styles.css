@@ -1,0 +1,40 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content form {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+}
+.content form .input-group {
+  margin-top: 40px;
+}
+.content form label {
+  font: 600 16px Poppins;
+  color: #6c757d;
+}
+.content form .input-check {
+  display: flex;
+  flex-direction: row;
+  margin: 30px 0;
+  align-items: center;
+}
+.content form .input-check #check {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+.content form .button {
+  width: 50%;
+  justify-self: center;
+}
