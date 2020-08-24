@@ -31,3 +31,19 @@ header {
 .nav-links li a:hover {
   color: #ced4da;
 }
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 20px;
+  border-bottom: 1px solid #d3d3de;
+}
+.header h1 {
+  font: 700 30px Archivo;
+  margin-top: 40px;
+  color: #6c757d;
+}
+.header #add-link {
+  padding: 10px;
+  border-radius: 8px;
+  background: #d3d3de;
+}
