@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ListLinks from "./pages/ListLinks";
 import CreateLinks from "./pages/CreateLinks";
+import EditLinks from "./pages/EditLinks";
 
 const Routes = () => {
   return (
@@ -14,6 +15,7 @@ const Routes = () => {
         <Route path="/register" component={Register} />
         <Route path="/links" exact component={ListLinks} />
         <Route path="/links/cadastro" component={CreateLinks} />
+        <Route path="/links/editar" component={EditLinks} />
       </Switch>
     </BrowserRouter>
   );
