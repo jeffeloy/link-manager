@@ -1,18 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "./LoginActions";
+
 import { FiLogIn } from "react-icons/fi";
 import logoImg from "../../assets/logo.png";
 import linkImg from "../../assets/link.svg";
 
 import "./styles.css";
 
-const Login = () => {
+const Login = (props) => {
+  const { account, login } = props;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    login({ email: "jeffersoneloy@gmail.com", password: "123456" });
+  }
+
+  console.log("Login.account", account);
   return (
     <div className="login-container">
       <section className="form">
         <img src={logoImg} alt="Link Manager" className="logo" />
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Faça seu login</h1>
 
           <input type="email" className="input" placeholder="E-mail" />
@@ -35,4 +47,10 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    account: state.login.account,
+  };
+};
+
+export default connect(mapStateToProps, { login })(Login);
