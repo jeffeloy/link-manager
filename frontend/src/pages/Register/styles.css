@@ -1,5 +1,5 @@
 .register-container {
-  width: 100%;
+  width: 100vw;
   max-width: 1120px;
   height: 100vh;
   margin: 0 auto;
@@ -20,7 +20,7 @@
 }
 
 .register-container section.form form h1 {
-  font-size: 32px;
+  font: 700 32px Archivo;
   margin-bottom: 32px;
   color: #3f3d56;
 }
