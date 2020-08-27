@@ -1,19 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
+import { connect } from "react-redux";
+import { register } from "./RegisterActions";
 
 import logoImg from "../../assets/logo.png";
 import linkImg from "../../assets/link-register.svg";
 
 import "./styles.css";
 
-const Login = () => {
+const Register = (props) => {
+  const { account, register } = props;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return (
     <div className="register-container">
       <section className="form">
         <img src={logoImg} alt="Link Manager" className="logo" />
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Cadastre a sua conta</h1>
 
           <input type="email" className="email" placeholder="E-mail" />
@@ -41,4 +48,10 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    account: state.register.account,
+  };
+};
+
+export default connect(mapStateToProps, { register })(Register);
