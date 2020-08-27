@@ -14,6 +14,11 @@ const Register = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    register(data);
   }
   return (
     <div className="register-container">
@@ -23,13 +28,24 @@ const Register = (props) => {
         <form onSubmit={handleSubmit}>
           <h1>Cadastre a sua conta</h1>
 
-          <input type="email" className="email" placeholder="E-mail" />
+          <input
+            type="email"
+            className="email"
+            placeholder="E-mail"
+            name="email"
+          />
 
-          <input type="password" className="password" placeholder="Senha" />
+          <input
+            type="password"
+            className="password"
+            placeholder="Senha"
+            name="password"
+          />
           <input
             type="password"
             className="confirm-password"
             placeholder="Confirmar senha"
+            name="password_confirmation"
           />
 
           <button type="submit" className="button">
