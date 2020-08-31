@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { connect } from "react-redux";
 import { register } from "./RegisterActions";
@@ -10,6 +10,8 @@ import linkImg from "../../assets/link-register.svg";
 import "./styles.css";
 
 const Register = (props) => {
+  const history = useHistory();
+
   const { account, register } = props;
 
   function handleSubmit(e) {
@@ -19,7 +21,11 @@ const Register = (props) => {
     const data = Object.fromEntries(formData);
 
     register(data);
+    if (account) {
+      history.push("/links");
+    }
   }
+
   return (
     <div className="register-container">
       <section className="form">
