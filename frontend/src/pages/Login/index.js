@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "./LoginActions";
 
@@ -10,15 +10,21 @@ import linkImg from "../../assets/link.svg";
 import "./styles.css";
 
 const Login = (props) => {
+  const history = useHistory();
   const { account, login } = props;
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    login({ email: "jeffersoneloy@gmail.com", password: "123456" });
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    login(data);
+    if (account) {
+      history.push("/links");
+    }
   }
 
-  console.log("Login.account", account);
   return (
     <div className="login-container">
       <section className="form">
@@ -27,9 +33,14 @@ const Login = (props) => {
         <form onSubmit={handleSubmit}>
           <h1>Faça seu login</h1>
 
-          <input type="email" className="input" placeholder="E-mail" />
+          <input
+            type="email"
+            className="input"
+            name="email"
+            placeholder="E-mail"
+          />
 
-          <input type="password" placeholder="Senha" />
+          <input type="password" name="password" placeholder="Senha" />
 
           <button type="submit" className="button">
             Entrar
