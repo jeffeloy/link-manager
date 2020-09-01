@@ -8,6 +8,7 @@ import logoImg from "../../assets/logo.png";
 import linkImg from "../../assets/link.svg";
 
 import "./styles.css";
+import { getFormData } from "../../helpers/form";
 
 const Login = (props) => {
   const { account, login } = props;
@@ -15,9 +16,7 @@ const Login = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
+    const data = getFormData(e);
     login(data);
   }
   if (account) {

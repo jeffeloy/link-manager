@@ -8,6 +8,7 @@ import logoImg from "../../assets/logo.png";
 import linkImg from "../../assets/link-register.svg";
 
 import "./styles.css";
+import { getFormData } from "../../helpers/form";
 
 const Register = (props) => {
   const { account, register } = props;
@@ -15,9 +16,7 @@ const Register = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
+    const data = getFormData(e);
     register(data);
   }
 
