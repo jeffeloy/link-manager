@@ -1,7 +1,6 @@
 li,
 a {
-  font-weight: 500;
-  font-size: 16px;
+  font: 500 16px Poppins;
   color: #333333;
   text-decoration: none;
 }
@@ -29,6 +28,21 @@ header {
   transition: all 0.3s ease 0s;
 }
 .nav-links li a:hover {
+  color: #ced4da;
+}
+.nav-links li button {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  font: 500 16px Poppins;
+  border: none;
+  color: #f4f3ee;
+}
+.nav-links li button svg {
+  text-align: center;
+  margin-left: 8px;
+}
+.nav-links li button:hover {
   color: #ced4da;
 }
 .header {

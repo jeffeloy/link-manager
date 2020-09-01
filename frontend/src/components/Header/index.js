@@ -1,9 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { FiLogOut } from "react-icons/fi";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../actions/AccountActions";
 
 import "./styles.css";
 
-const Header = ({ title, children }) => {
+const Header = ({ title, children, logout, account }) => {
+  if (!account) {
+    return <Redirect to="/" />;
+  }
+  function handleLogout(e) {
+    e.preventDefault();
+
+    logout();
+  }
   return (
     <>
       <header>
@@ -16,7 +27,10 @@ const Header = ({ title, children }) => {
               <Link to="/links">Links</Link>
             </li>
             <li>
-              <a href="#">Sair</a>
+              <button onClick={handleLogout}>
+                Sair
+                <FiLogOut size={20} color="#f4f3ee" />
+              </button>
             </li>
           </ul>
         </nav>
@@ -29,4 +43,10 @@ const Header = ({ title, children }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    account: state.account.account,
+  };
+};
+
+export default connect(mapStateToProps, { logout })(Header);

@@ -2,6 +2,7 @@ import { apiPost } from "../helpers/api";
 
 export const REGISTER = "REGISTER";
 export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 
 export const register = (data) => {
   const payload = apiPost("/users/sign-up", data);
@@ -11,4 +12,7 @@ export const register = (data) => {
 export const login = (data) => {
   const payload = apiPost("/users/sign-in", data);
   return { type: LOGIN, payload };
+};
+export const logout = () => {
+  return { type: LOGOUT, payload: {} };
 };
