@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "./LoginActions";
+import { login } from "../../actions/AccountActions";
 
 import { FiLogIn } from "react-icons/fi";
 import logoImg from "../../assets/logo.png";
@@ -10,7 +10,6 @@ import linkImg from "../../assets/link.svg";
 import "./styles.css";
 
 const Login = (props) => {
-  const history = useHistory();
   const { account, login } = props;
 
   function handleSubmit(e) {
@@ -20,9 +19,9 @@ const Login = (props) => {
     const data = Object.fromEntries(formData);
 
     login(data);
-    if (account) {
-      history.push("/links");
-    }
+  }
+  if (account) {
+    return <Redirect to="/links" />;
   }
 
   return (
@@ -60,7 +59,7 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    account: state.login.account,
+    account: state.account.account,
   };
 };
 

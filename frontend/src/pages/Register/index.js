@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { connect } from "react-redux";
-import { register } from "./RegisterActions";
+import { register } from "../../actions/AccountActions";
 
 import logoImg from "../../assets/logo.png";
 import linkImg from "../../assets/link-register.svg";
@@ -10,8 +10,6 @@ import linkImg from "../../assets/link-register.svg";
 import "./styles.css";
 
 const Register = (props) => {
-  const history = useHistory();
-
   const { account, register } = props;
 
   function handleSubmit(e) {
@@ -21,9 +19,10 @@ const Register = (props) => {
     const data = Object.fromEntries(formData);
 
     register(data);
-    if (account) {
-      history.push("/links");
-    }
+  }
+
+  if (account) {
+    return <Redirect to="/links" />;
   }
 
   return (
@@ -72,7 +71,7 @@ const Register = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    account: state.register.account,
+    account: state.account.account,
   };
 };
 

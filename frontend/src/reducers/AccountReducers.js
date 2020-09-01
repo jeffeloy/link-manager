@@ -1,6 +1,5 @@
-import { setAccount, setToken, setRefreshToken } from "../../helpers/account";
-import { REGISTER } from "./RegisterActions";
-
+import { setAccount, setToken, setRefreshToken } from "../helpers/account";
+import { REGISTER, LOGIN } from "../actions/AccountActions";
 const initialState = {
   account: null,
 };
@@ -9,9 +8,10 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case REGISTER:
+    case LOGIN:
       const response = payload ? payload.data : null;
       const account = response ? response.data : null;
-      const metadata = payload ? response.metadata : null;
+      const metadata = response ? response.metadata : null;
 
       const token = metadata ? metadata.token : null;
       const refreshToken = metadata ? metadata.refreshToken : null;
