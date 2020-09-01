@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import ReduxPromise from "redux-promise";
 
-import accountReducers from "./reducers/AccountReducers";
+import accountReducer from "./reducers/AccountReducer";
+import linkReducer from "./reducers/LinkReducer";
 
 const reducers = combineReducers({
-  account: accountReducers,
+  account: accountReducer,
+  link: linkReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(ReduxPromise));

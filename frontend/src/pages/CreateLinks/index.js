@@ -1,16 +1,22 @@
 import React from "react";
 import { FiPlusSquare } from "react-icons/fi";
-
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { linkCreate } from "../../actions/LinkActions";
 import Header from "../../components/Header";
 import { getFormData } from "../../helpers/form";
 
 import "./styles.css";
 
-const CreateLinks = () => {
+const CreateLinks = ({ link, linkCreate }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
     const data = getFormData(e);
+    linkCreate(data);
+  }
+  if (link) {
+    return <Redirect to="/links" />;
   }
   return (
     <div className="container">
@@ -33,7 +39,7 @@ const CreateLinks = () => {
 
           <div className="input-check">
             <label>Rede Social ?</label>
-            <input id="check" name="is-social" type="checkbox" />
+            <input id="check" name="isSocial" type="checkbox" />
           </div>
 
           <button className="button" id="btn-submit" type="submit">
@@ -46,4 +52,10 @@ const CreateLinks = () => {
   );
 };
 
-export default CreateLinks;
+const mapStateToProps = (state) => {
+  return {
+    link: state.link.link,
+  };
+};
+
+export default connect(mapStateToProps, { linkCreate })(CreateLinks);
