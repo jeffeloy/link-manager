@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Routes from "./routes";
 
-import "./global.css"
-const App = () => {
-  return <Routes />
+import { initAccount } from "./actions/AccountActions";
+import "./global.css";
+
+const App = ({ initAccount }) => {
+  useEffect(() => {
+    initAccount();
+  }, [initAccount]);
+  return <Routes />;
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return { account: state.account.account };
+};
+export default connect(mapStateToProps, { initAccount })(App);
