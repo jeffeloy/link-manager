@@ -5,3 +5,40 @@
   display: flex;
   flex-direction: column;
 }
+.content-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 40px;
+}
+
+.content-links .link-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content-links .link-content img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.content-links .link-content .info-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-links .link-content .info-link span {
+  font: 500 16px Poppins;
+  color: #333333;
+}
+
+.content-links section button {
+  font: 500 16px Poppins;
+  color: #333333;
+  background: transparent;
+  border: none;
+  margin-left: 10px;
+}
