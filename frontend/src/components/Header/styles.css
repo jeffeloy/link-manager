@@ -6,7 +6,9 @@ a {
 }
 
 header {
+  width: 100vw;
   height: 50px;
+  position: absolute;
   display: flex;
   background: #c71f37;
   flex-direction: row;
@@ -46,6 +48,7 @@ header {
   color: #ced4da;
 }
 .header {
+  margin-top: 50px;
   display: flex;
   justify-content: space-evenly;
   padding: 10px 20px;

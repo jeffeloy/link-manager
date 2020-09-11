@@ -28,7 +28,7 @@ const ListLinks = ({ links, linkList }) => {
       {links && links.length
         ? links.map((link) => {
             return (
-              <div className="content-links">
+              <div key={link.id} className="content-links">
                 <div className="link-content">
                   <img src={imageDefault} alt="Imagem" />
                   <div className="info-link">
